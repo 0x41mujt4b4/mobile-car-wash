@@ -1,0 +1,59 @@
+{
+    "Index": {
+        "title": "Barraqh - Mobile Car Wash",
+        "bookNow": "Book Now",
+        "description": "Premium mobile car wash service that comes to you. Fast, reliable, and convenient."
+    },
+    "Navbar": {
+        "logo": "Barraqh",
+        "home": "Home",
+        "services": "Services",
+        "howItWorks": "How it Works",
+        "book": "Book Wash",
+        "switchLang": "العربية"
+    },
+    "Hero": {
+        "heading": "We Bring the Sparkle to You",
+        "subtitle": "Professional mobile car wash delivered to your doorstep. Eco-friendly, fast, and remarkably convenient.",
+        "cta": "Book a Wash Now",
+        "secondaryCta": "View Services"
+    },
+    "Features": {
+        "heading": "Why Choose Barraqh",
+        "subtitle": "We redefine convenience and quality. Here is what makes us different.",
+        "f1_title": "Come to You",
+        "f1_desc": "Home, office, or anywhere else. We bring our fully equipped van to your location.",
+        "f2_title": "Eco-Friendly",
+        "f2_desc": "We use specialized products that require less water and are safe for the environment.",
+        "f3_title": "Professional Detailers",
+        "f3_desc": "Our team is highly trained and uses the best tools to give your car a showroom finish."
+    },
+    "Booking": {
+        "heading": "Ready for a Wash?",
+        "subtitle": "Follow these quick steps to book your mobile car wash.",
+        "stepTracker": "Step {step} of 4",
+        "reviewService": "Service",
+        "reviewLocation": "Location",
+        "reviewName": "Name",
+        "reviewPhone": "Phone",
+        "reviewEmail": "Email",
+        "bookingConfirmed": "Booking Confirmed! (Demo)",
+        "step1": "Select Service",
+        "step2": "Location",
+        "step3": "Your Details",
+        "step4": "Review",
+        "basicWash": "Basic Wash",
+        "basicTime": "45 mins",
+        "premiumWash": "Premium Wash",
+        "premiumTime": "1.5 hrs",
+        "interiorDetail": "Interior Detailing",
+        "interiorTime": "3 hrs",
+        "next": "Next Step",
+        "back": "Back",
+        "submit": "Confirm Booking",
+        "nameLabel": "Full Name",
+        "phoneLabel": "Phone Number",
+        "emailLabel": "Email Address",
+        "locPlaceholder": "Enter your address or drop a pin"
+    }
+}
