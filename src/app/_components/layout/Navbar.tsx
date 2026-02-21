@@ -1,17 +1,35 @@
 "use client";
 
+import { useState, useRef, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { motion } from 'framer-motion';
-import { Link, usePathname } from '@/i18n/routing';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { Button } from '@/app/_components/ui/Button';
-import { Droplets, Globe, Menu } from 'lucide-react';
+import { Droplets, Globe, Menu, ChevronDown } from 'lucide-react';
 
 export function Navbar() {
   const t = useTranslations('Navbar');
   const locale = useLocale();
   const pathname = usePathname();
+  const router = useRouter();
   
-  const oppositeLocale = locale === 'ar' ? 'en' : 'ar';
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsLangOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const switchLanguage = (newLocale: string) => {
+    router.replace(pathname, { locale: newLocale as any });
+    setIsLangOpen(false);
+  };
   
   return (
     <motion.header
@@ -40,10 +58,42 @@ export function Navbar() {
         
         {/* Actions */}
         <div className="flex items-center gap-4">
-          <Link href={pathname} locale={oppositeLocale} className="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">
-            <Globe size={16} />
-            <span className="hidden sm:inline-block">{t('switchLang')}</span>
-          </Link>
+          
+          <div className="relative" ref={dropdownRef}>
+            <button 
+              onClick={() => setIsLangOpen(!isLangOpen)}
+              className="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors py-2"
+            >
+              <Globe size={16} />
+              <span className="hidden sm:inline-block">{locale === 'en' ? 'English' : 'العربية'}</span>
+              <ChevronDown size={14} className={`transition-transform duration-200 ${isLangOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            <AnimatePresence>
+              {isLangOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute right-0 mt-2 w-32 bg-white rounded-xl shadow-lg border border-slate-100 py-1 overflow-hidden z-50"
+                >
+                  <button 
+                    onClick={() => switchLanguage('en')}
+                    className={`w-full text-left px-4 py-2 text-sm transition-colors ${locale === 'en' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-700 hover:bg-slate-50'}`}
+                  >
+                    English
+                  </button>
+                  <button 
+                    onClick={() => switchLanguage('ar')}
+                    className={`w-full text-left px-4 py-2 text-sm transition-colors ${locale === 'ar' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-700 hover:bg-slate-50'}`}
+                  >
+                    العربية
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           <div className="hidden md:block">
             <Button size="sm">{t('book')}</Button>
           </div>
