@@ -76,17 +76,17 @@ export function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute right-0 mt-2 w-32 bg-white rounded-xl shadow-lg border border-slate-100 py-1 overflow-hidden z-50"
+                  className="absolute end-0 mt-2 w-32 bg-white rounded-xl shadow-lg border border-slate-100 py-1 overflow-hidden z-50"
                 >
                   <button 
                     onClick={() => switchLanguage('en')}
-                    className={`w-full text-left px-4 py-2 text-sm transition-colors ${locale === 'en' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-700 hover:bg-slate-50'}`}
+                    className={`w-full text-start px-4 py-2 text-sm transition-colors ${locale === 'en' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-700 hover:bg-slate-50'}`}
                   >
                     English
                   </button>
                   <button 
                     onClick={() => switchLanguage('ar')}
-                    className={`w-full text-left px-4 py-2 text-sm transition-colors ${locale === 'ar' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-700 hover:bg-slate-50'}`}
+                    className={`w-full text-start px-4 py-2 text-sm transition-colors ${locale === 'ar' ? 'bg-brand-50 text-brand-600 font-semibold' : 'text-slate-700 hover:bg-slate-50'}`}
                   >
                     العربية
                   </button>
